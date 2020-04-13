@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-
-
 const Square = (props) => {
   color = props.color;
   return <div style={{height:'100', width:'100', backgroundColor:{color}}} />
@@ -23,19 +21,14 @@ const createBoard = function (dimensions) {
   return result.map(e => {
     return e;
   })
-  // return result.reduce((acc,val)=> {
-  //   return acc + val;
-  // })
 }
 
 class Board extends Component {
   constructor(){
     super()
-
     this.state = {
       dimensions: 8
     }
-
     this.changeDimensions = this.changeDimensions.bind(this);
   }
 
@@ -46,7 +39,6 @@ class Board extends Component {
   }
 
   render () {
-
     let widthHeight = this.state.dimensions * 100;
     let checkerBoard = createBoard(this.state.dimensions)
 
