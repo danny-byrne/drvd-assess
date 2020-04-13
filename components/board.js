@@ -25,39 +25,27 @@ class Board extends Component {
   }
 
   render () {
-    let dimensions = this.state.dimensions;
 
-    const board = function(){
-      let checkerBoard = []
-      let row = 0;
-      while(row < dimensions){
-        let col = 0;
-        while(col < dimensions){
-          if(row % 2 === 0){
-            if(col % 2 === 0){
-              board.push (<Square color="black"/>)
-            } else {
-              board.push (<Square color="white"/>)
-            }
-          }
-          //if an odd row, reverse the order
-          if(row % 2 !== 0){
-            if(col % 2 === 0){
-              board.push (<Square color="white"/>)
-            } else {
-              board.push (<Square color="black"/>)
-            }
-          }
-          col++
+    let widthHeight = this.state.dimensions * 100;
+    
+    const board = function () {
+      let result = []
+      let dimensions = Math.pow(this.state.dimensions, 2);
+      let box = 0;
+      while(box < dimensions){
+        if(!box % 2){
+          result.push(<Square color="black"/>)
+        } else {
+          result.push(<Square color="white"/>)
         }
-        row++   
       }
-      return checkerBoard.join('')
+      return result.reduce((acc,val)=> {
+        return acc + val;
+      })
     }
 
-
     return (
-      <div>
+      <div style={{width:{widthHeight}, height:{widthHeight}, display:'flex'}}>
       {board}
       <input name="dimensions" value={this.state.dimensions} onChange={this.changeDimensions} />
       </div>
