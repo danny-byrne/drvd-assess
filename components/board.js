@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const Square = (props) => {
-  color = props.color;
+  let color = props.color;
   return <div style={{height:'100', width:'100', backgroundColor:{color}}} />
 }
 
@@ -16,6 +16,7 @@ const createBoard = function (dimensions) {
     } else {
       result.push(<Square color="white"/>)
     }
+    box++
   }
 
   return result.map(e => {
